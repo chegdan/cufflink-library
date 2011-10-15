@@ -98,7 +98,7 @@ Below is an outline of the steps necessary to install the cufflink library for u
 
 }}}
 
-This particular setup uses an un-preconditioned conjugate gradient solver on a single GPU; compressed sparse row (CSR)matrix storage; 1e-8 absolute tolerance and 0 relative tolerance; with a maximum number of inner iterations of 10,000.
+This particular setup uses an un-preconditioned conjugate gradient solver on a single GPU; compressed sparse row (CSR)matrix storage; 1e-8 absolute tolerance and 0 relative tolerance; with a maximum number of inner iterations of 10,000.  For more examples, see the cufflink test cases provided in the distribution.
 
 === Testing the installation ===
   To ensure that your original test directory is not altered and/or accidentally uploaded to the svn server, make a copy of the cufflinkTest folder and place this in the $FOAM_RUN directory.
