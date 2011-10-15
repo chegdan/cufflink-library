@@ -6,12 +6,12 @@ Below is an outline of the steps necessary to install the cufflink library for u
 = Details =
 
 == System Requirements ==
-  cufflink was developed and tested on Linux Ubuntu 10.04 amd64 with CUDA 4.0, Thrust v1.4, and Cusp 0.2.0. To check your version of Thrust, Cusp, and cufflink, please compile the version.cu file and run in the command line to give the output
+  Due to subtle differences in the forks of OpenFOAM®, this library is only compatible with [http://www.extend-project.de OpenFOAM-extend].  cufflink was developed and tested on Linux Ubuntu 10.04 amd64 with CUDA 4.0, Thrust v1.4, and Cusp 0.2.0. To check your version of Thrust, Cusp, and cufflink, please compile the version.cu file and run in the command line to give the output
 
 {{{
 	Thrust v1.4
 	Cusp   v0.2.0
-	Cufflink   v0.0.1
+	Cufflink   v0.1.0
 
 }}}
 
