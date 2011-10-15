@@ -72,7 +72,7 @@ Below is an outline of the steps necessary to install the cufflink library for u
 
   where the <gpu to change> is an integer labeling the device number.  To find the device number, use the deviceQuery program from the Nvidia SDK to see before and after your call of nvidia-smi.  To see supported devices that allow compute mode changes, simply call nvidia-smi without flags or arguements.  See the following thread on the cusp-users group for more information ( [http://goo.gl/ojQc9] and also [http://goo.gl/kc1YU] ).
 
-== Running in OpenFoam extend ==
+== Running in OpenFOAM extend ==
   Once the cufflink library has been compiled, in order to use the code in openfoam one needs to include the line
 
 {{{
