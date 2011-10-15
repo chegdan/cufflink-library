@@ -29,7 +29,13 @@ Below is an outline of the steps necessary to install the cufflink library for u
 
 
 == Installation ==
-  Ensure a working OpenFOAM-1.6-ext version and that one can compile a simple OpenFOAM solver.  Ensure that CUDA 4.0, Thrust v1.4, and Cusp 0.2.0 are installed and running examples.  A simple cusp example is provided in this directory as testcg.cu and is compiled with nvcc -o testcusp testcg.cu and run with the command ./testcusp  The output from this solver should be similar to:
+
+Download the Openfoam extend version using git by:
+{{{
+ git clone git://openfoam-extend.git.sourceforge.net/gitroot/openfoam-extend/openfoam-extend
+}}}
+
+  Ensure a working of OpenFOAM-1.6-ext version and that one can compile a simple OpenFOAM solver.  Ensure that CUDA 4.0, Thrust v1.4, and Cusp 0.2.0 are installed and running examples.  A simple cusp example is provided in this directory as testcg.cu and is compiled with nvcc -o testcusp testcg.cu and run with the command ./testcusp  The output from this solver should be similar to:
 
 {{{
 	Solver will continue until residual norm 0.01 or reaching 100 iterations 
