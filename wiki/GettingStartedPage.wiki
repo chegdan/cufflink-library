@@ -24,12 +24,15 @@ Below is an outline of the steps necessary to install the cufflink library for u
 	Cuda compilation tools, release 4.0, V0.2.1221
 }}}
 
-  Also, ensure that your mpi installation is correct so that the runParallel test script can be run.  
-  To see whether your parallel version of openfoam is running, test the interFoam/damBreak tutorial
+  Also, ensure that your open mpi installation is installed correctly so that the runParallel test script can be run and the multi-GPU solvers can be run.  To see whether your parallel version of openfoam is running, test the interFoam/damBreak tutorial
 
 
 == Installation ==
-  Ensure a working of OpenFOAM-1.6-ext version and that one can compile a simple OpenFOAM solver.  Ensure that CUDA 4.0, Thrust v1.4, and Cusp 0.2.0 are installed and running examples.  A simple cusp example is provided in this directory as testcg.cu and is compiled with nvcc -o testcusp testcg.cu and run with the command ./testcusp  The output from this solver should be similar to:
+
+There are several keys to a successful compilation of cufflink:
+
+  # Ensure a working of OpenFOAM-1.6-ext version and that one can compile a simple OpenFOAM solver.
+  # Ensure that CUDA 4.0, Thrust v1.4, and Cusp 0.2.0 are installed and running examples.  A simple cusp example is provided in this directory as testcg.cu and is compiled with nvcc -o testcusp testcg.cu and run with the command ./testcusp  The output from this solver should be similar to:
 
 {{{
 	Solver will continue until residual norm 0.01 or reaching 100 iterations 
@@ -50,13 +53,13 @@ Below is an outline of the steps necessary to install the cufflink library for u
 	Successfully converged after 12 iterations.
 }}}
 
-  To compile cufflink to be used in OpenFOAM, move to the installation directory of cufflink and use the nvccWmakeAll script:  
+  # To compile cufflink to be used in OpenFOAM, move to the installation directory of cufflink and use the nvccWmakeAll script:  
 
 {{{
 	./nvccWmakeAll <arch> > make.log 2>&1
 }}}
 
-  Where <arch> is sm_10, sm_13, or sm_20 depending on your device architecture.  *Many warnings are given dealing with white spaces and tuple.inl functions and can be ignored with this version of cufflink.*
+  Where {{{<arch>}}} is sm_10, sm_13, or sm_20 depending on your device architecture.  The standard output stream and error messages should be printed to a file called make.log for you.  *Many warnings are given dealing with white spaces and tuple.inl functions and can be ignored with this version of cufflink.*
 
 == Multi-GPU Implementation *REQUIRED* ==
   The multi-gpu implementation REQUIRES the file lduInterface.H in cufflink to replace the OpenFOAM core file located in:
