@@ -53,7 +53,7 @@ There are several keys to a successful compilation of cufflink:
 	Successfully converged after 12 iterations.
 }}}
 
-  # To compile cufflink to be used in OpenFOAM, move to the installation directory of cufflink and use the nvccWmakeAll script:  
+  3. To compile cufflink, move to the installation directory of cufflink and use the nvccWmakeAll script:  
 
 {{{
 	./nvccWmakeAll <arch> > make.log 2>&1
@@ -62,18 +62,22 @@ There are several keys to a successful compilation of cufflink:
   Where {{{<arch>}}} is sm_10, sm_13, or sm_20 depending on your device architecture.  The standard output stream and error messages should be printed to a file called make.log for you.  *Many warnings are given dealing with white spaces and tuple.inl functions and can be ignored with this version of cufflink.*
 
 == Multi-GPU Implementation *REQUIRED* ==
-  The multi-gpu implementation REQUIRES the file lduInterface.H in cufflink to replace the OpenFOAM core file located in:
+=== Changes in {{{lduInterface.H}}} ===
+  The multi-gpu implementation *REQUIRES the file {{{lduInterface.H}}}* in cufflink to replace the OpenFOAM core file located in:
 {{{
 	OpenFOAM/OpenFOAM-1.6-ext/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduInterface 
 }}}
 
-  This change requires a complete recompilation of openfoam.  Also, each time the multi-gpu solver is used the first iteration is usually the longest.  This is most likely caused by having the card in compute-mode 0 which allows multiple parallel cpu threads to access the same gpu.  In order to reduce this overhead associated with cpu-gpu thread initialization, change the compute-mode to 1 by running:
+  This change requires a complete recompilation of openfoam.  The reason the new file is required is that the parallel code needs to know information about neighbor processors for each processor patch.  New virtual functions were added to {{{lduInterface.H}}}.
+
+===Possible changes in compute mode === 
+  Each time the multi-gpu solver is used the first iteration is usually the longest when it bumps into the MPI functions for the first time.  This is most likely caused by having the card in compute-mode 0 which allows multiple parallel cpu threads to access the same gpu.  In order to reduce this overhead associated with cpu-gpu thread initialization, change the compute-mode to 1 by running:
 
 {{{	
 	sudo /usr/bin/nvidia-smi -c 1 -g <gpu to change>
 }}}
 
-  where the <gpu to change> is an integer labeling the device number.  To find the device number, use the deviceQuery program from the Nvidia SDK to see before and after your call of nvidia-smi.  To see supported devices that allow compute mode changes, simply call nvidia-smi without flags or arguements.  See the following thread on the cusp-users group for more information ( [http://goo.gl/ojQc9] and also [http://goo.gl/kc1YU] ).
+  where the {{{<gpu to change>}}} is an integer labeling the device number.  To find the device number, use the deviceQuery program from the Nvidia SDK to see before and after your call of nvidia-smi.  To see supported devices that allow compute mode changes, simply call nvidia-smi without flags or arguements.  See the following thread on the cusp-users group for more information ( [http://goo.gl/ojQc9] and also [http://goo.gl/kc1YU] ).
 
 == Running in OpenFOAM extend ==
   Once the cufflink library has been compiled, in order to use the code in openfoam one needs to include the line
