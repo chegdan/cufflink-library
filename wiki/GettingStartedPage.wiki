@@ -31,7 +31,7 @@ Below is an outline of the steps necessary to install the cufflink library for u
 
 There are several keys to a successful compilation of cufflink:
 
-  # Ensure a [http://code.google.com/p/cufflink-library/wiki/InstallOpenFOAM working] of OpenFOAM-1.6-ext and that one can compile a simple OpenFOAM solver such as [http://openfoamwiki.net/index.php/How_to_add_temperature_to_icoFoam myIcoFoam].
+  # Ensure a [http://code.google.com/p/cufflink-library/wiki/InstallOpenFOAM working] of OpenFOAM-1.6-ext and that one can compile a simple OpenFOAM solver such as [http://openfoamwiki.net/index.php/How_to_add_temperature_to_icoFoam myIcoFoam] (Specifically, part 2 of the tutorial of "How to add temperature to icoFoam").
   # Ensure that CUDA 4.0, Thrust v1.4, and Cusp 0.2.0 are installed and running examples.  A simple cusp example is provided in this directory as testcg.cu and is compiled with nvcc -o testcusp testcg.cu and run with the command ./testcusp  The output from this solver should be similar to:
 
 {{{
