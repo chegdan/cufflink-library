@@ -43,7 +43,7 @@ nvcc -o testcusp testcg.cu
 ./testcusp  
 }}}
 
-The output from this solver should be similar to:
+  The output from this test solver (with the provided A.mtx file from Cusp) should be similar to:
 
 {{{
 	Solver will continue until residual norm 0.01 or reaching 100 iterations 
