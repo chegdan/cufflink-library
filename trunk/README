@@ -145,11 +145,7 @@ The official web-site of OpenCFD® Limited is www.openfoam.com .
 
   and change lduMatrix to 2.  This will print additional information to the screen to aid in debugging.
 
-* Issue Management
-  Please put all issues related to the code in the document located at:
 
-https://spreadsheets.google.com/spreadsheet/ccc?key=0Amx-rPJl2uJPdE1TRUdhelk2V21QeHJ0Y1R1bHVEVUE&hl=en_US
- 
 * List of Contributors
   Daniel P. Combest
   Jeremy Day
