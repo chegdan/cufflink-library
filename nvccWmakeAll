@@ -1,0 +1,66 @@
+#!/bin/sh
+#this is a compilation script to make the shared object for the cuda solver
+# run with ./nvccWmakeAll <arch> > make.log 2>&1
+
+compileCufflink ()
+{ 
+
+myArch=$1
+
+#remove existing libraries that were previously compiled
+rm $FOAM_LIBBIN/libCuspSolvers.so $FOAM_LIBBIN/libCufflink.so
+
+#change to the solver directory to compile the cufflink solvers
+cd lduMatrix/solvers
+
+#clean the OpenFOAM solvers
+wclean 
+
+#remove the include directory
+rm -r lnInclude
+
+# a newer, much shorter compilation command that has faster compilation time
+nvcc --shared -o $FOAM_LIBBIN/libCuspSolvers.so cufflink.cu -I$MPI_HOME/include -L$MPI_HOME/lib -lmpi -lmpi_cxx -lpthread --compiler-options -fPIC -arch $myArch
+
+#make the libcufflink.so shared object
+wmake libso
+
+#change the test directory
+cd ../../cufflinkTest/testCufflinkFoam
+
+#make the solver for the test cases
+wmake
+
+return 0
+} 
+
+
+if [ $# -lt 1 ]
+then
+    echo Incorrect number of arguments
+    echo "Usage: $0 <arch argument>"
+    echo "where <arch argument> is sm_10 for single precision, sm_13 for double precision, or sm_20 for double precision Fermi architecture"
+    exit 1
+fi
+
+if [ "$1" = sm_10 ]
+then
+	echo Compiling parallel and serial cufflink with single precision with $1
+	compileCufflink $1
+
+elif [ "$1" = sm_13 ]
+then
+	echo Compiling parallel and serial cufflink with double precision with $1
+	compileCufflink $1
+
+elif [ "$1" = sm_20 ]
+then
+	echo Compiling parallel and serial cufflink with double precision for Fermi architecture with $1
+	compileCufflink $1
+
+else
+	echo "invalid architecture choice"
+fi
+
+
+# ----------------------------------------------------------------- end-of-file

@@ -1,0 +1,16 @@
+cufflink_DiagPCG/cufflink_DiagPCG.C
+cufflink_SmAPCG/cufflink_SmAPCG.C
+cufflink_AinvPCG/cufflink_AinvPCG.C
+cufflink_CG/cufflink_CG.C
+
+CFL_Headers/cpuInterfaces.C
+
+cufflink_CG_Parallel/cufflink_CG_Parallel.C
+cufflink_SmAPCG_Parallel/cufflink_SmAPCG_Parallel.C
+cufflink_AinvPCG_Parallel/cufflink_AinvPCG_Parallel.C
+cufflink_DiagPCG_Parallel/cufflink_DiagPCG_Parallel.C
+
+cufflink_AinvPBiCGStab_Parallel/cufflink_AinvPBiCGStab_Parallel.C
+cufflink_DiagPBiCGStab_Parallel/cufflink_DiagPBiCGStab_Parallel.C
+
+LIB = $(FOAM_LIBBIN)/libCufflink

@@ -1,0 +1,44 @@
+#!/bin/bash
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+
+cd cufflink
+
+for i in cufflink_CG cufflink_DiagPCG cufflink_SmAPCG
+do
+	cd $i
+
+	for j in N10 N50 N100 N500 N1000 N2000
+		do
+		   cd $j
+			pwd
+			runApplication blockMesh
+			runApplication testCufflinkFoam
+		   cd ..
+	done
+	
+	cd ..
+done
+
+cd ../OpenFOAM
+
+for i in CG DPCG GAMG
+do
+	cd $i
+
+	for j in N10 N50 N100 N500 N1000 N2000
+		do
+		   cd $j
+			pwd
+			runApplication blockMesh
+			runApplication testCufflinkFoam
+		   cd ..
+	done
+	
+	cd ..
+done
+
+cd ..
+
+
