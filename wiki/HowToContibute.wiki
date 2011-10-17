@@ -13,4 +13,5 @@ If you would like to contribute to the development of the code there are several
   # If you want to write a new linear system solver, that is not already included (or included in Cusp but not implemented here), please do so.  We could use some more asymmetric solvers.  We will be putting up a roadmap of what we are planning on doing in the near future.
   # *Suggested improvements in algorithms* can be discussed in the [http://groups.google.com/group/cufflink-users cufflink-users] group and will get included with the distribution.  
   # If you want to contribute ideas for the roadmap, discuss it on the 
-  #  For suggested features, you can go to the {http://code.google.com/p/cufflink-library/issues/list Issues Log] or discuss it in the users group
+  #  For suggested features, you can go to the [http://code.google.com/p/cufflink-library/issues/list Issues Log] or discuss it in the users group
+  # *If you contributed to cusp and want to add that feature to cufflink*, please let us know and we can let you add the code.
