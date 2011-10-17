@@ -1,0 +1,26 @@
+#!/bin/sh
+#this is a script to clean what has been compiled
+
+#remove existing libraries that were previously compiled
+rm $FOAM_LIBBIN/libCuspSolvers.so $FOAM_LIBBIN/libCufflink.so
+
+#change to the solver directory to compile the cufflink solvers
+cd lduMatrix/solvers
+
+#clean the OpenFOAM solvers
+wclean 
+
+#remove the include directory
+rm -r lnInclude
+
+#change the test directory
+cd ../../cufflinkTest/testCufflinkFoam
+
+#clean the solver for the test cases
+wclean
+
+#clear tutorial files
+cd ../testCases
+
+./Allclean
+
