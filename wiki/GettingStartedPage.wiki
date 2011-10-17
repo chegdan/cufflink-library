@@ -6,7 +6,7 @@ Below is an outline of the steps necessary to install the cufflink library for u
 = Details =
 
 == System Requirements ==
-  Due to subtle differences in the forks of OpenFOAM®, this library is only compatible with [http://www.extend-project.de OpenFOAM-extend].  cufflink was developed and tested on Linux Ubuntu 10.04 amd64 with CUDA 4.0, Thrust v1.4, and Cusp 0.2.0. To check your version of Thrust, Cusp, and cufflink, please compile the version.cu file in the cufflink install directory with 
+  Due to subtle differences in the forks of [http://openfoam.org/ OpenFOAM®], this library is only compatible with [http://www.extend-project.de OpenFOAM-extend].  cufflink was developed and tested on [http://www.ubuntu.com/ Linux Ubuntu 10.04 amd64 LTS] with [http://developer.nvidia.com/cuda-toolkit-40 CUDA 4.0], Thrust v1.4 (included in CUDA 4.0), and [http://code.google.com/p/cusp-library/ Cusp 0.2.0]. To check your version of Thrust, Cusp, and cufflink, please compile the version.cu file in the cufflink install directory with 
  {{{
      nvcc version.cu -o version
  }}}
@@ -29,8 +29,19 @@ and run in the {{{./version}}} command in the terminal to give the output
 	Cuda compilation tools, release 4.0, V0.2.1221
 }}}
 
-  Also, ensure that your open mpi installation is installed correctly so that the runParallel test script can be run and the multi-GPU solvers can be run.  To see whether your parallel version of openfoam is running, test the interFoam/damBreak tutorial
+  Also, ensure that your open mpi installation is installed correctly so that the runParallel test script will work and the multi-GPU solvers can be run.  To see whether you OpenFOAM install will work in parallel, test Allrun script located in 
 
+{{{
+tutorials/multiphase/interFoam/laminar
+}}}
+
+folder by executing 
+
+{{{
+./Allrun
+}}}
+
+Without openMPI working correctly, the multi-gpu solvers will not work.
 
 == Installation ==
 
