@@ -3,6 +3,9 @@ cufflink_SmAPCG/cufflink_SmAPCG.C
 cufflink_AinvPCG/cufflink_AinvPCG.C
 cufflink_CG/cufflink_CG.C
 
+cufflink_AinvPBiCGStab/cufflink_AinvPBiCGStab.C
+cufflink_DiagPBiCGStab/cufflink_DiagPBiCGStab.C
+
 CFL_Headers/cpuInterfaces.C
 
 cufflink_CG_Parallel/cufflink_CG_Parallel.C
