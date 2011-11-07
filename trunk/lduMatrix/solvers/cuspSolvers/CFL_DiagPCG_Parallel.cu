@@ -73,6 +73,11 @@ extern "C" void CFL_DiagPCG_Parallel(cusp_equation_system *CES,  OFSolverPerform
     cusp::array1d<ValueType,MemorySpace> r(N);
     cusp::array1d<ValueType,MemorySpace> p(N);
     cusp::array1d<ValueType,MemorySpace> Ap(N);
+
+	cusp::array1d< ValueType, hostMemorySpace > ph(p.size(),0);//used in ApjLoop.H
+	cusp::array1d<ValueType,hostMemorySpace> *pjh;
+	pjh = new cusp::array1d<ValueType,hostMemorySpace>[CFLInterfaces.nParInterfaces];
+	for(int j = 0;j<CFLInterfaces.nParInterfaces;j++){ pjh[j] = cusp::array1d<ValueType,hostMemorySpace> (OFInterfaces->nColsInterface[j]);	}
         
     // y <- Ax
     cusp::multiply(A, X, y);

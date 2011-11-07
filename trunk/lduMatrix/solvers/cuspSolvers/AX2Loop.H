@@ -38,16 +38,16 @@ This file is part of cufflink.
         Daniel P. Combest.  All rights reserved.
 
     Description
-        The first loop involving the interfaces
+        used inside while loop of PBiCGStab
                                                             
 \**********************************************************************/
 
 //BEGIN INTERFACES
 //taking into account the interface influence
 
-	cusp::array1d< ValueType, hostMemorySpace > Xh(X.size(),0); //define out here to save some time
-	thrust::copy(X.begin(),X.end(),Xh.begin());
+	//cusp::array1d< ValueType, hostMemorySpace > Xh(X.size(),0); //not needed in redefinition of AXLoop
 
+	thrust::copy(X.begin(),X.end(),Xh.begin());//here to reduce redendant operations to save some time
 
 
 for(int j = 0;j<CFLInterfaces.nParInterfaces;j++)

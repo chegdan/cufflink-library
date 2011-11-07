@@ -42,6 +42,8 @@ This file is part of cufflink.
                                                             
 \**********************************************************************/
 
+	thrust::copy(Mp.begin(),Mp.end(),Mph.begin());//out here to cut down on redundant processes
+
 //BEGIN INTERFACES
 //taking into account the interface influence
 	for(int j = 0;j<CFLInterfaces.nParInterfaces;j++){
@@ -49,29 +51,29 @@ This file is part of cufflink.
 		MPI_Status sts;
 
 		cusp::array1d< ValueType, MemorySpace > Mpj(CFLInterfaces.nColsInterface[j],0);
-		cusp::array1d< ValueType, hostMemorySpace > Mpjh(CFLInterfaces.nColsInterface[j],0);
-		cusp::array1d< ValueType, hostMemorySpace > Mph(Mp.size(),0);
+		//cusp::array1d< ValueType, hostMemorySpace > Mpjh[j](CFLInterfaces.nColsInterface[j],0);
+		//cusp::array1d< ValueType, hostMemorySpace > Mph(Mp.size(),0);
 
 		if(CFLInterfaces.neighbProcNo[j]>CFLInterfaces.myThreadNumber){
 
-			thrust::copy(Mp.begin(),Mp.end(),Mph.begin());
+			//thrust::copy(Mp.begin(),Mp.end(),Mph.begin());
 	
 			//send my Mp vector to my neighbor
 			MPI_CHECK(MPI_Send(&Mph[0],Mph.size(),MPI_SCALAR,CFLInterfaces.neighbProcNo[j],0,MPI_COMM_WORLD));
 
 			//recieve my neighbors Mp vector
-			MPI_CHECK(MPI_Recv(&Mpjh[0],CFLInterfaces.nColsInterface[j],MPI_SCALAR,CFLInterfaces.neighbProcNo[j],0,MPI_COMM_WORLD,&sts));
+			MPI_CHECK(MPI_Recv(&Mpjh[j][0],CFLInterfaces.nColsInterface[j],MPI_SCALAR,CFLInterfaces.neighbProcNo[j],0,MPI_COMM_WORLD,&sts));
 
-			//CFLInterfaces.Mpj[j] = Mpjh;
-			thrust::copy(Mpjh.begin(),Mpjh.end(),Mpj.begin());
+			//CFLInterfaces.Mpj[j] = Mpjh[j];
+			thrust::copy(Mpjh[j].begin(),Mpjh[j].end(),Mpj.begin());
 
 		}else{
 			//recieve my neighbors Mp vector
-			MPI_CHECK(MPI_Recv(&Mpjh[0],CFLInterfaces.nColsInterface[j],MPI_SCALAR,CFLInterfaces.neighbProcNo[j],0,MPI_COMM_WORLD,&sts));
-			//CFLInterfaces.Mpj[j] = Mpjh;
-			thrust::copy(Mpjh.begin(),Mpjh.end(),Mpj.begin());
+			MPI_CHECK(MPI_Recv(&Mpjh[j][0],CFLInterfaces.nColsInterface[j],MPI_SCALAR,CFLInterfaces.neighbProcNo[j],0,MPI_COMM_WORLD,&sts));
+			//CFLInterfaces.Mpj[j] = Mpjh[j];
+			thrust::copy(Mpjh[j].begin(),Mpjh[j].end(),Mpj.begin());
 
-			thrust::copy(Mp.begin(),Mp.end(),Mph.begin());
+			//thrust::copy(Mp.begin(),Mp.end(),Mph.begin());
 
 			//send my Mp vector to my neighbor
 			MPI_CHECK(MPI_Send(&Mph[0],Mph.size(),MPI_SCALAR,CFLInterfaces.neighbProcNo[j],0,MPI_COMM_WORLD));

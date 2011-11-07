@@ -85,6 +85,18 @@ extern "C" void CFL_DiagPBiCGStab_Parallel(cusp_equation_system *CES,  OFSolverP
     cusp::array1d<ValueType,MemorySpace>  Ms(N);
     cusp::array1d<ValueType,MemorySpace> AMs(N);
 
+	cusp::array1d< ValueType, hostMemorySpace > Msh(Ms.size(),0);
+	cusp::array1d< ValueType, hostMemorySpace > Mph(Mp.size(),0);
+	cusp::array1d< ValueType, hostMemorySpace > *Mpjh;
+	cusp::array1d< ValueType, hostMemorySpace > *Msjh;
+	Mpjh = new cusp::array1d<ValueType,hostMemorySpace>[CFLInterfaces.nParInterfaces];
+	Msjh = new cusp::array1d<ValueType,hostMemorySpace>[CFLInterfaces.nParInterfaces];
+
+	for(int j = 0;j<CFLInterfaces.nParInterfaces;j++){ 
+		Mpjh[j] = cusp::array1d<ValueType,hostMemorySpace> (OFInterfaces->nColsInterface[j]);	
+		Msjh[j] = cusp::array1d<ValueType,hostMemorySpace> (OFInterfaces->nColsInterface[j]);	
+	}
+
     // y <- Ax
     cusp::multiply(A, X, y);
 
@@ -139,7 +151,7 @@ extern "C" void CFL_DiagPBiCGStab_Parallel(cusp_equation_system *CES,  OFSolverP
           // y <- Ax
           cusp::multiply(A, X, y);
 
-	  #include "AXLoop.H"
+	  #include "AX2Loop.H"
 
           // r <- b - A*x
           cusp::blas::axpby(B, y, r, ValueType(1), ValueType(-1));
