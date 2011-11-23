@@ -1,4 +1,4 @@
-Cufflink uses some source code from the OpenFOAM lduMatrix solvers that is rewritten 
+Cufflink uses some source code from the OpenFOAM lduMatrix solvers.  This code has been rewritten 
 for cufflink classes to send OpenFOAM coefficients to the CUDA solvers.  
 
 OpenFOAM License Version 1.6-ext August 22, 2011
@@ -21,8 +21,8 @@ OpenFOAM License Version 1.6-ext August 22, 2011
 
 
 
-Cufflink also uses functions from THRUST and CUSP but no code only code for 
-testing CUSP install (testcg.cu) and sample data in A.mtx  
+Cufflink also uses functions from THRUST and CUSP, along with code for 
+testing the CUSP install (testcg.cu) and sample data in A.mtx  
 
 
 Both THRUST and CUSP License Version 0.2.0 August 22, 2011
