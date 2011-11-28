@@ -62,6 +62,7 @@ gpuInterfaces::gpuInterfaces(const cpuInterfaces *OFInterfaces){//constructor
 	nParInterfaces 	= OFInterfaces->nParInterfaces;
 	nRowsInterface 	= OFInterfaces->nRowsInterface;
 	Aij 		= new cusp::coo_matrix<IndexType, ValueType, MemorySpace>[nParInterfaces];
+	Xjh		= new cusp::array1d< ValueType, hostMemorySpace > [nParInterfaces];
 
 	//fill the gpuInterfaces Aij matrices
 	int j;
@@ -73,6 +74,8 @@ gpuInterfaces::gpuInterfaces(const cpuInterfaces *OFInterfaces){//constructor
 
 		Aij[j] = cusp::coo_matrix<IndexType, ValueType, MemorySpace>(OFInterfaces->Aij[j]);//dynamic array using new
 		Aij[j].sort_by_row_and_column();//must be sorted to convert or multiply
+
+		Xjh[j] = cusp::array1d< ValueType, hostMemorySpace > (nColsInterface[j],0);
 		
 	}//end for loop
 
