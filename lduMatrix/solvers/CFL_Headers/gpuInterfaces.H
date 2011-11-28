@@ -72,7 +72,8 @@ public:
 	std::vector<int> nColsInterface;	//array holding number of columns for each parallel interface
 	std::vector<int> nnz;		//array holding the number of non-zeros that an interface possesses
 	cusp::coo_matrix<IndexType, ValueType, MemorySpace> *Aij;//array of sparse matrices holding the interface matrices themselves
-	cusp::array1d< ValueType, hostMemorySpace > *Xjh;//array of host vectors from neighbor processors
+
+	cusp::array1d<ValueType,hostMemorySpace> *Xjh;//host version of off diagonal X vectors
 
 	gpuInterfaces(const cpuInterfaces *);//convert the cpuInterfaces
 	gpuInterfaces();//do nothing constructor
