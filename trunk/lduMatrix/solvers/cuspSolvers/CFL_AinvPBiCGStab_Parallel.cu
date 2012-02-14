@@ -210,5 +210,9 @@ extern "C" void CFL_AinvPBiCGStab_Parallel(cusp_equation_system *CES,  OFSolverP
 	//pass the solution vector back	
 	CES->X = X;
 
+	//delete the dynamically allocated arrays
+	delete [] Mpjh; //dcombest Feb 13, 2012
+	delete [] Msjh; //dcombest Feb 13, 2012
+
 
 }

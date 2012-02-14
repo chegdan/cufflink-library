@@ -154,4 +154,8 @@ extern "C" void CFL_CG_Parallel(cusp_equation_system *CES,  OFSolverPerformance 
 
 	//pass the solution vector back	
 	CES->X = X;
+
+	//delete the dynamically allocated arrays
+	delete [] pjh; //dcombest Feb 13, 2012
+
 }
