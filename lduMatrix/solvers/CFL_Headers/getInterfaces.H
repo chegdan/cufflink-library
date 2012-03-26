@@ -80,7 +80,7 @@ OFInterfaces.myThreadNumber = Pstream::myProcNo();//get my thread number before 
 		//send the size of the x vector here. example in combineGatherScatter.C
 		OPstream::write
                 (
-                    Pstream::scheduled,//only works correctly with scheduled
+                    Pstream::blocking,//Pstream::scheduled,//only works correctly with scheduled
                     interfaces()[OFInterfaces.interfaceAddr[j]].interface().neighbProcNo(),
                     reinterpret_cast<const char*>(&OFInterfaces.nRowsInterface),
                     sizeof(OFInterfaces.nRowsInterface)
@@ -90,7 +90,7 @@ OFInterfaces.myThreadNumber = Pstream::myProcNo();//get my thread number before 
 		//read the value from neighbors. example in combineGatherScatter.C
                 IPstream::read
                 (
-                    Pstream::scheduled,//only works correctly with scheduled
+                    Pstream::blocking,//Pstream::scheduled,//only works correctly with scheduled
                     interfaces()[OFInterfaces.interfaceAddr[j]].interface().neighbProcNo(),
                     reinterpret_cast<char*>(&tempCols),
                     sizeof(int)
@@ -108,7 +108,7 @@ OFInterfaces.myThreadNumber = Pstream::myProcNo();//get my thread number before 
     	   //send the row indices to the neighbor that are used as neighbor column indices. example in combineGatherScatter.C
 			OPstream::write
          	       (
-       		        Pstream::scheduled,
+       		        Pstream::blocking,//Pstream::scheduled,
        		        interfaces()[OFInterfaces.interfaceAddr[j]].interface().neighbProcNo(),
        		        reinterpret_cast<const char*>(&pa[0]),
        		        OFInterfaces.nnz[j]*sizeof(int)
@@ -117,7 +117,7 @@ OFInterfaces.myThreadNumber = Pstream::myProcNo();//get my thread number before 
 	  //read the column indices from neighbors. example in combineGatherScatter.C
                	       IPstream::read
                 	(
-                    	Pstream::scheduled,
+                    	Pstream::blocking,//Pstream::scheduled,
                    	interfaces()[OFInterfaces.interfaceAddr[j]].interface().neighbProcNo(),
                     	reinterpret_cast<char*>(&OFInterfaces.Aij[j].column_indices[0]),
                    	OFInterfaces.nnz[j]*sizeof(int)
