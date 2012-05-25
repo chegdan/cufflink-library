@@ -5,7 +5,7 @@ Because this library is dependent on the work of many other projects, please giv
 {{{
 @MISC{Cufflink,
   author = {Daniel P. Combest and Jeremy Day},
-  title = {Cufflink: a library for linking numerical methods based on CUDA™ C/C++ with OpenFOAM®.},
+  title = {Cufflink: a library for linking numerical methods based on CUDA C/C++ with OpenFOAM.},
   year = {2011},
   url = {http://cufflink-library.googlecode.com},
   note = {Version 0.1.0}
