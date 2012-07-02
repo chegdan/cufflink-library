@@ -1,6 +1,0 @@
-EXE_INC = \
-	-I/usr/local/cuda/include 
-
-LIB_LIBS = \
-	-lCuspSolvers 
-

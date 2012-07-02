@@ -39,11 +39,10 @@ This file is part of cufflink.
 
     Description
         A header file to compile the extern "C" functions containing the 
-	CUSP CUDA™ based solvers.  This avoids problems with the multipel 
-	defintiions of some functions.
+	CUSP CUDA™ based solvers.  This avoids problems with the multiple 
+	definitions of some functions.
                                                              
 \**********************************************************************/
-
 #include "cuda.h"
 
 //System Includes
