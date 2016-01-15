@@ -1,5 +1,3 @@
-#                            -*- mode: org; -*-
-#
 #+TITLE:    *cufflink README for version 0.0.1*
 #+AUTHOR:   Daniel P. Combest.
 #+DATE:     7 Sept 2011
@@ -7,7 +5,7 @@
 #+OPTIONS:  Daniel Combest
 #+COPYRIGHT Held by Daniel Combest
 
-* Preamble
+# Preamble
   ______  __    __   _______  _______  __       __   __   __   __  ___     
  /      ||  |  |  | |   ____||   ____||  |     |  | |  \ |  | |  |/  /     
 |  ,----'|  |  |  | |  |__   |  |__   |  |     |  | |   \|  | |  '  /  
@@ -27,7 +25,7 @@ producer of OpenFOAM® software.
 
 The official web-site of OpenCFD® Limited is www.openfoam.com .
 
-* License
+# License
     cufflink is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -41,7 +39,7 @@ The official web-site of OpenCFD® Limited is www.openfoam.com .
     You should have received a copy of the GNU General Public License
     along with cufflink.  If not, see <http://www.gnu.org/licenses/>. 
 
-* System requirements
+# System requirements
   cufflink was developed and tested on Linux Ubuntu 10.04 amd64 with CUDA 4.0, 
   Thrust v1.4, and Cusp 0.2.0. To check your version of Thrust, Cusp, and cufflink, 
   please compile the version.cu file and run in the command line to give the output
@@ -60,7 +58,7 @@ The official web-site of OpenCFD® Limited is www.openfoam.com .
   Also, ensure that your mpi installation is correct so that the runParallel test script can be run.  
   To see whether your parallel version of openfoam is running, test the interFoam/damBreak tutorial
 
-* Installation
+# Installation
   Ensure a working OpenFOAM-1.6-ext version and that one can compile a simple 
   OpenFOAM solver.  Ensure that CUDA 4.0, Thrust v1.4, and Cusp 0.2.0 
   are installed and running examples.  A simple cusp example is provided in 
@@ -91,7 +89,7 @@ The official web-site of OpenCFD® Limited is www.openfoam.com .
   Where <arch> is sm_10, sm_13, or sm_20 depending on your device architecture.  Many warnings are given dealing 
   with white spaces and tuple.inl functions and can be ignored with this version of cufflink.
 
-* Multi-GPU Implementation *****REQUIRED*****
+# Multi-GPU Implementation *****REQUIRED*****
   The multi-gpu implementation REQUIRES the file lduInterface.H in cufflink to replace the OpenFOAM core file 
   located in:
 
@@ -109,7 +107,7 @@ The official web-site of OpenCFD® Limited is www.openfoam.com .
   devices that allow compute mode changes, simply call nvidia-smi without flags or arguements.  See the 
   following thread on the cusp-users group for more information ( http://goo.gl/ojQc9 and also http://goo.gl/kc1YU ).
 
-* Running in OpenFoam
+# Running in OpenFoam
   Once the cufflink library has been compiled, in order to use the code in openfoam one needs to include the line
 
     libs ("libCufflink.so");
@@ -127,7 +125,7 @@ The official web-site of OpenCFD® Limited is www.openfoam.com .
     dropTolerance ;
     linStrategym ;
 
-* Testing the installation
+# Testing the installation
   To ensure that your original test directory is not altered and/or accidentally uploaded to the svn server, 
   make a copy of the cufflinkTest folder and place this in the $FOAM_RUN directory.
 
@@ -147,7 +145,7 @@ The official web-site of OpenCFD® Limited is www.openfoam.com .
   and change lduMatrix to 2.  This will print additional information to the screen to aid in debugging.
 
 
-* List of Contributors
+# List of Contributors
   Daniel P. Combest
   Jeremy Day
 
