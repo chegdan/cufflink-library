@@ -1,17 +1,17 @@
-+TITLE: *cufflink README for version 0.0.1*
-+AUTHOR:   Daniel P. Combest.
-+DATE:     7 Sept 2011
-+LINK:     To Be Determined
-+OPTIONS:  Daniel Combest
-+COPYRIGHT Held by Daniel Combest
+* TITLE: *cufflink README for version 0.0.1*
+* +AUTHOR:   Daniel P. Combest.
+* DATE:     7 Sept 2011
+* LINK:     To Be Determined
+* OPTIONS:  Daniel Combest
+* COPYRIGHT Held by Daniel Combest
 
 # Preamble
-  ______  __    __   _______  _______  __       __   __   __   __  ___     
- /      ||  |  |  | |   ____||   ____||  |     |  | |  \ |  | |  |/  /     
-|  ,----'|  |  |  | |  |__   |  |__   |  |     |  | |   \|  | |  '  /  
-|  |     |  |  |  | |   __|  |   __|  |  |     |  | |  . `  | |    <   
-|  `----.|  `--'  | |  |     |  |     |  `----.|  | |  |\   | |  .  \
- \______| \______/  |__|     |__|     |_______||__| |__| \__| |__|\__\
+      ______  __    __   _______  _______  __       __   __   __   __  ___     
+     /      ||  |  |  | |   ____||   ____||  |     |  | |  \ |  | |  |/  /     
+    |  ,----'|  |  |  | |  |__   |  |__   |  |     |  | |   \|  | |  '  /  
+    |  |     |  |  |  | |   __|  |   __|  |  |     |  | |  . `  | |    <   
+    |  `----.|  `--'  | |  |     |  |     |  `----.|  | |  |\   | |  .  \
+     \______| \______/  |__|     |__|     |_______||__| |__| \__| |__|\__\
 
 Cuda For FOAM Link
 
