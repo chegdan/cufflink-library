@@ -1,5 +1,5 @@
-* TITLE: *cufflink README for version 0.0.1*
-* +AUTHOR:   Daniel P. Combest.
+* TITLE: cufflink README for version 0.0.1
+* AUTHOR:   Daniel P. Combest.
 * DATE:     7 Sept 2011
 * LINK:     To Be Determined
 * OPTIONS:  Daniel Combest
